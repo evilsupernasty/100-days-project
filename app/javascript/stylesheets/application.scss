@@ -1,2 +1,8 @@
+// import bulma variable so we can access color variables
+@import '~bulma/sass/utilities/initial-variables';
+// import bulma variable overrides before importing bulma
+@import 'variable_overrides';
+// import bulma
 @import '~bulma';
+// import application styles
 @import 'flash_messages';
