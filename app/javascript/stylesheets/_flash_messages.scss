@@ -1,0 +1,7 @@
+.notification__notice {
+  @extend .is-info;
+}
+
+.notification__alert {
+  @extend .is-warning;
+}
