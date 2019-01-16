@@ -1,0 +1,30 @@
+<section class="section has-background-white-ter">
+  <div class="container">
+    <div class="box content">
+      <h1>New Project</h1>
+      <%= form_with model: @project do |f| %>
+      <div class="field">
+        <%= f.label :title, class: "label" %>
+        <div class="control">
+          <%= f.text_field :title, class: "input" %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.label :summary, class: "label" %>
+        <div class="control">
+          <%= f.text_area :summary, class: "input" %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.label :start_date, class: "label" %>
+        <div class="control">
+          <%= f.date_field :start_date, class: "input", value: Date.current.to_s(:db) %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create project", class: "button is-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
