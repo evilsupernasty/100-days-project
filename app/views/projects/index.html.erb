@@ -1,1 +1,17 @@
-<h1>projects index</h1>
+<section class="section has-background-white-ter">
+  <div class="container">
+    <div class="box content">
+      <h1>Projects</h1>
+      <div class="projects__grid">
+      <% if @projects.empty? %>
+        <p>There are no projects. <%= new_project_link %></p>
+      <% end %>
+      <% @projects.each do |project| %>
+        <div class="projects__item box">
+          <h2><%= link_to project.title, project %></h2>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</section>

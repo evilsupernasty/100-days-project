@@ -1,1 +1,15 @@
-<h1>show project</h1>
+<section class="section has-background-white-ter">
+  <div class="container">
+    <div class="box content">
+      <h1><%= @project.title %></h1>
+      <p><%= @project.summary %></p>
+      <%= time_tag @project.start_date %>
+      <% if user_signed_in? && current_user.id == @project.user_id %>
+      <div class="actions">
+        <%= link_to "Edit project", :edit_project, class: "button is-primary" %>
+        <%= button_to "Cancel project", @project, data: { confirm: "Are you sure? This can't be undone." }, method: :delete, class: "button" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
