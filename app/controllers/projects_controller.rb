@@ -36,6 +36,8 @@ class ProjectsController < ApplicationController
 
     if @project.update(project_params)
       redirect_to @project, notice: "Successfully updated project"
+    else
+      render :edit
     end
   end
 
