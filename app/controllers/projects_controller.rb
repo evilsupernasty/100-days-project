@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
     @project.user_id = current_user.id
 
     if @project.save
-        redirect_to @project, notice: "Successfully created project #{@project.title}"
+      redirect_to @project, notice: "Successfully created project #{@project.title}"
+    else
+      render :new
     end
   end
 
