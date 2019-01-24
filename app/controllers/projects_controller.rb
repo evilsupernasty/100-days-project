@@ -14,8 +14,10 @@ class ProjectsController < ApplicationController
     @project.user_id = current_user.id
 
     if @project.save
-        redirect_to @project, notice: "Successfully created project #{@project.title}"
+      redirect_to @project, notice: "Successfully created project #{@project.title}" and return
     end
+
+    render :new
   end
 
   def show
@@ -33,8 +35,10 @@ class ProjectsController < ApplicationController
     find_project
 
     if @project.update(project_params)
-      redirect_to @project, notice: "Successfully updated project"
+      redirect_to @project, notice: "Successfully updated project" and return
     end
+
+    render :edit
   end
 
   def destroy
