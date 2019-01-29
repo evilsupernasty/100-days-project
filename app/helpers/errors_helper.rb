@@ -9,8 +9,8 @@ module ErrorsHelper
   end
 
   def errors_count(resource)
-    I18n.t("errors.messages.not_saved",
-           count: resource.errors.count,
-           resource: resource.class.model_name.human.downcase)
+    t("errors.messages.not_saved",
+      count: resource.errors.count,
+      resource: resource.class.model_name.human.downcase)
   end
 end
