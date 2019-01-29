@@ -7,4 +7,23 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import Rails from 'rails-ujs';
+import Turbolinks from 'turbolinks';
+import forms from '../scripts/forms';
+import newUserTimezone from '../scripts/new_user_timezone';
 import '../stylesheets/application';
+
+Rails.start();
+Turbolinks.start();
+
+function ready() {
+  newUserTimezone();
+  forms();
+}
+
+if (document.readyState !== 'loading') {
+  ready();
+} else {
+  // the document hasn't finished loading/parsing yet so let's add an event handler
+  document.addEventListener('DOMContentLoaded', ready);
+}
