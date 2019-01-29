@@ -1,20 +1,11 @@
 module ErrorsHelper
-  def errors_notification resource
+  def errors_notification(resource)
     return "" if resource.errors.empty?
 
-    messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
-    sentence = I18n.t("errors.messages.not_saved",
-                      count: resource.errors.count,
-                      resource: resource.class.model_name.human.downcase)
-
-    html = <<-HTML
-    <div class="notification is-warning">
-      <p>#{sentence}</p>
-      <ul>#{messages}</ul>
-    </div>
-    HTML
-
-    html.html_safe
+    content_tag :div, class: "notification is-warning" do
+      content_tag(:p, sentence) +
+        content_tag(:ul, error_messages(resource))
+    end
   end
 
   def help_error_message(resource, attribute, default = "")
@@ -23,6 +14,18 @@ module ErrorsHelper
 
     return "" unless has_error || default
 
-    "<p class=\"help#{has_error ? " is-danger" : ""}\">#{has_error ? error_msgs : default}</p>".html_safe
+    content_tag :p, has_error ? error_msgs : default, class: "help#{has_error ? " is-danger" : ""}"
+  end
+
+  private
+
+  def error_messages(resource)
+    resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+  end
+
+  def errors_count(resource)
+    I18n.t("errors.messages.not_saved",
+           count: resource.errors.count,
+           resource: resource.class.model_name.human.downcase)
   end
 end
