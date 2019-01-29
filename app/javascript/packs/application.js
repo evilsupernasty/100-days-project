@@ -25,5 +25,5 @@ if (document.readyState !== 'loading') {
   ready();
 } else {
   // the document hasn't finished loading/parsing yet so let's add an event handler
-  document.addEventListener('DOMContentLoaded', ready);
+  document.addEventListener('turbolinks:load', ready);
 }
