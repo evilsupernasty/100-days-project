@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box content">
       <h1>Edit Project</h1>
-      <%= errors_notification @project %>
+      <%= render partial: "shared/form_errors_notification", locals: {resource: @project} %>
       <%= form_with model: @project do |f| %>
       <div class="field">
         <%= f.label :title, class: "label" %>

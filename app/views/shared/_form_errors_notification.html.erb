@@ -1,0 +1,10 @@
+<% unless resource.errors.empty? %>
+  <%= content_tag :div, class: "notification is-warning" do %>
+    <%= content_tag :p, errors_count(resource) %>
+    <%= content_tag :ul do %>
+      <% resource.errors.full_messages.each do |msg| %>
+        <%= content_tag :li, msg %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
