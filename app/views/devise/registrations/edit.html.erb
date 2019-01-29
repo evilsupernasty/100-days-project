@@ -20,13 +20,11 @@
             <% end %>
 
             <div class="field">
-              <%= f.label :password, class: "label" %><small>(leave blank if you don't want to change it)</small>
+              <%= f.label :password, "New password", class: "label" %>
               <div class="control">
                 <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
               </div>
-              <% if @minimum_password_length %>
-                <p class="help"><%= @minimum_password_length %> characters minimum</em>
-              <% end %>
+              <%= help_error_message resource, :password, "#{minimum_password_length?}Leave blank to keep existing password." %>
             </div>
 
             <div class="field">
@@ -34,18 +32,29 @@
               <div class="control">
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
               </div>
+              <%= help_error_message resource, :password_confirmation %>
             </div>
 
             <div class="field">
-              <%= f.label :current_password, class: "label" %><small>(we need your current password to confirm your changes)</small>
-              <div class="control">
-                <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
+              <%= f.label :timezone, class: "label" %>
+              <div class="control is-expanded">
+                <div class="select is-fullwidth">
+                <%= f.time_zone_select :timezone, nil, { selected: :timezone }, { class: "input" } %>
+                </div>
               </div>
             </div>
 
-            <div class="actions">
-              <%= f.submit "Update", class: "button is-primary" %>
+            <hr>
+            <%= f.label :current_password, class: "label" %>
+            <div class="field has-addons">
+              <div class="control is-expanded">
+                <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
+              </div>
+              <div class="control">
+                <%= f.submit "Update", class: "button is-primary", disabled: "disabled", id: "update-user-submit" %>
+              </div>
             </div>
+            <%= help_error_message resource, :current_password, "We need your current password to confirm your changes." %>
           <% end %>
           <hr>
           <h3>Cancel my account</h3>
