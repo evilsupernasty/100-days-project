@@ -1,7 +1,7 @@
 module FormsHelper
-  def minimum_password_length?
+  def minimum_password_length
     return "" unless @minimum_password_length
 
-    "#{@minimum_password_length} characters minimum. "
+    t "shared.form.minimum_password_length", min_pwd_length: @minimum_password_length
   end
 end

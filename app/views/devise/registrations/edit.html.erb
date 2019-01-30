@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-half-desktop is-offset-one-quarter-desktop is-one-third-fullhd is-offset-one-third-fullhd">
         <div class="box content">
-          <h2>Edit <%= resource_name.to_s.humanize %></h2>
+          <h2><%= t("shared.form.edit_heading", resource: resource_name.to_s.humanize).titlecase %></h2>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= render partial: "shared/form_errors_notification", locals: {resource: resource} %>
@@ -15,15 +15,15 @@
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <div><%= t "shared.form.awaiting_email_confirmation",  email: resource.unconfirmed_email %></div>
             <% end %>
 
             <div class="field">
-              <%= f.label :password, "New password", class: "label" %>
+              <%= f.label :password, t("shared.form.new_password").upcase_first, class: "label" %>
               <div class="control">
                 <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
               </div>
-              <%= help_error_message resource, :password, "#{minimum_password_length?}Leave blank to keep existing password." %>
+              <%= help_error_message resource, :password, t("edit_user.form.help.new_password", min_pwd_length: minimum_password_length) %>
             </div>
 
             <div class="field">
@@ -50,18 +50,18 @@
                 <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
               </div>
               <div class="control">
-                <%= f.submit "Update", class: "button is-primary", disabled: "disabled", id: "update-user-submit" %>
+                <%= f.submit t("shared.update").upcase_first, class: "button is-primary", disabled: "disabled", id: "update-user-submit" %>
               </div>
             </div>
-            <%= help_error_message resource, :current_password, "We need your current password to confirm your changes." %>
+            <%= help_error_message resource, :current_password, t("edit_user.form.help.current_password") %>
           <% end %>
           <hr>
-          <h3>Cancel my account</h3>
+          <h3><%= t("shared.form.cancel_account").upcase_first %></h3>
 
-          <p>Unhappy?</p>
-          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button" %>
+          <p><%= t("shared.unhappy").upcase_first %></p>
+          <%= button_to t("shared.form.cancel_account").upcase_first, registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button" %>
           <hr>
-          <%= link_to "Back", :back %>
+          <%= link_to t("shared.back").upcase_first, :back %>
         </div>
       </div>
     </div>

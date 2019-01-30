@@ -30,4 +30,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  shared:
+    back: "back"
+    unhappy: "unhappy?"
+    update: "update"
+    form:
+      awaiting_email_confirmation: "Currently waiting confirmation for: %{email}"
+      cancel_account: "cancel my account"
+      edit_heading: "edit %{resource}"
+      minimum_password_length: "%{min_pwd_length} characters minimum. "
+      new_password: "new password"
+  edit_user:
+    form:
+      help:
+        current_password: "We need your current password to confirm your changes."
+        new_password: "%{min_pwd_length}Leave blank to keep existing password."
+
