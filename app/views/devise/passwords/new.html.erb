@@ -6,7 +6,7 @@
           <h2>Forgot your password?</h2>
           <p>You can request a password reset, we'll email you instructions to do this.</p>
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <%= devise_error_messages! %>
+            <%= render partial: "shared/form_errors_notification", locals: {resource: resource} %>
 
             <div class="field">
               <%= f.label :email, class: "label" %>
