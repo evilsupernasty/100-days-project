@@ -3,14 +3,8 @@ export default () => {
   const updateUserSubmit = document.querySelector('#update-user-submit');
 
   if (userCurrentPassword && updateUserSubmit) {
-    userCurrentPassword.addEventListener('input', (event) => {
-      if (event.target.value) {
-        updateUserSubmit.disabled = false;
-
-        return;
-      }
-
-      updateUserSubmit.disabled = true;
+    userCurrentPassword.addEventListener('input', event => {
+      updateUserSubmit.disabled = !event.target.value;
     });
   }
 }
